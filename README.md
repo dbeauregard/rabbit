@@ -1,1 +1,1 @@
-# RabbitMQ Client
+# Spring RabbitMQ Client
