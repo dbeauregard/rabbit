@@ -1,9 +1,9 @@
 services:
   rabbitmq:
-    image: 'rabbitmq:latest'
+    image: 'rabbitmq:management'
     environment:
-      - 'RABBITMQ_DEFAULT_PASS=vmware'
-      - 'RABBITMQ_DEFAULT_USER=tanzu'
+      - 'RABBITMQ_DEFAULT_USER=vmware'
+      - 'RABBITMQ_DEFAULT_PASS=tanzu'
     ports:
       - '5672:5672'
-      # - '15672:15672'
+      - '15672:15672'
