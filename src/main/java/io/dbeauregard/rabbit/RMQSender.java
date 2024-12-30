@@ -1,7 +1,5 @@
 package io.dbeauregard.rabbit;
 
-import java.util.concurrent.TimeUnit;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -11,19 +9,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class RMQSender implements CommandLineRunner {
     private final RabbitTemplate rabbitTemplate;
-    private final RMQReceiver receiver;
     private static Logger log = LoggerFactory.getLogger(RMQSender.class);
+    private static String msg_base = "Hello from RabbitMQ!";
 
-  public RMQSender(RMQReceiver receiver, RabbitTemplate rabbitTemplate) {
-    this.receiver = receiver;
+  public RMQSender(RabbitTemplate rabbitTemplate) {
     this.rabbitTemplate = rabbitTemplate;
   }
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("Sending message...");
-        rabbitTemplate.convertAndSend(RabbitApplication.topicExchangeName, "foo.bar.baz",
-                "Hello from RabbitMQ!");
-        receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
+        for(int x = 0; x < 10; x++) {
+            String msg = msg_base + " " + x;
+            log.info("Sending message...{}", msg);
+            rabbitTemplate.convertAndSend(RabbitApplication.topicExchangeName, "foo.bar.baz", msg);
+        }
     }
 }
