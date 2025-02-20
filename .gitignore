@@ -6,8 +6,8 @@ build/
 !**/src/test/**/build/
 
 ### RabbitMQ ###
-conf/*/logs/
-conf/*/mnesia/
+rmq-servers/*/logs/
+rmq-servers/*/mnesia/
 
 ### STS ###
 .apt_generated
