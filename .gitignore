@@ -8,6 +8,7 @@ build/
 ### RabbitMQ ###
 rmq-servers/*/logs/
 rmq-servers/*/mnesia/
+erl_crash.dump
 
 ### STS ###
 .apt_generated
