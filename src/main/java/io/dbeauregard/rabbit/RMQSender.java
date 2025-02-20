@@ -18,7 +18,7 @@ public class RMQSender implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        for(int x = 0; x < 10; x++) {
+        for(int x = 0; x < 100; x++) {
             String msg = msg_base + " " + x;
             log.info("Sending message...{}", msg);
             rabbitTemplate.convertAndSend(RabbitApplication.topicExchangeName, "foo.bar.baz", msg);

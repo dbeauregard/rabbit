@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 public class RabbitApplication {
 
 	static final String topicExchangeName = "spring-boot-exchange";
-	static final String queueName = "spring-boot";
+	static final String queueName = "spring-boot-queue";
 
 	public static void main(String[] args) {
 		SpringApplication.run(RabbitApplication.class, args);
@@ -20,12 +20,12 @@ public class RabbitApplication {
 
 	@Bean
 	Queue queue() {
-		return new Queue(queueName, false, true, false);
+		return new Queue(queueName, false, true, true);
 	}
 
 	@Bean
 	TopicExchange exchange() {
-		return new TopicExchange(topicExchangeName);
+		return new TopicExchange(topicExchangeName, false, true);
 	}
 
 	@Bean
