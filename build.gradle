@@ -1,32 +1,40 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.4.3'
+	id 'org.springframework.boot' version '3.4.3' apply false
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
-group = 'io.dbeauregard'
-version = '0.0.1-SNAPSHOT'
+allprojects {
+	group = 'io.dbeauregard'
+	version = '0.0.1-SNAPSHOT'
 
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+	java {
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(21)
+		}
+	}
+
+	repositories {
+		mavenCentral()
 	}
 }
 
-repositories {
-	mavenCentral()
-}
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-amqp'
-	 implementation 'org.springframework.amqp:spring-rabbit-stream'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.amqp:spring-rabbit-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
-}
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-amqp'
+		implementation 'org.springframework.amqp:spring-rabbit-stream'
+		implementation 'org.springframework.boot:spring-boot-starter-actuator'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testImplementation 'org.springframework.amqp:spring-rabbit-test'
+		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+		developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+    }
 
-tasks.named('test') {
-	useJUnitPlatform()
+    test {
+        useJUnitPlatform()
+    }
 }

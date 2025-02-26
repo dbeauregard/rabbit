@@ -1,4 +1,4 @@
-package io.dbeauregard.rabbit;
+package io.dbeauregard.rabbit.publisher;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

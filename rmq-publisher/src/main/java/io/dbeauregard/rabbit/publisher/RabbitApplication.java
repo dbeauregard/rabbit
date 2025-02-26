@@ -1,4 +1,4 @@
-package io.dbeauregard.rabbit;
+package io.dbeauregard.rabbit.publisher;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

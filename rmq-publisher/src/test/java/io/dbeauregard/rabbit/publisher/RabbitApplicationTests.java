@@ -1,4 +1,4 @@
-package io.dbeauregard.rabbit;
+package io.dbeauregard.rabbit.publisher;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
