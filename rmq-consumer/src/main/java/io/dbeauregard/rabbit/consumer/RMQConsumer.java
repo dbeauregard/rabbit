@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 // @RabbitListener(queues = RabbitApplication.queueName)
-public class RMQReceiver {
+public class RMQConsumer {
 
-    private static Logger log = LoggerFactory.getLogger(RMQReceiver.class);
+    private static Logger log = LoggerFactory.getLogger(RMQConsumer.class);
 
     // @RabbitHandler
     @RabbitListener(queues = RabbitApplication.queueName)
