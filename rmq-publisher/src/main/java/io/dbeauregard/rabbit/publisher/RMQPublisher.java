@@ -21,8 +21,8 @@ public class RMQPublisher implements CommandLineRunner {
         for(int x = 0; x < 100; x++) {
             String msg = msg_base + " " + x;
             log.info("Sending message...{}", msg);
-            rabbitTemplate.convertAndSend(RabbitApplication.topicExchangeName, "foo.bar.baz", msg);
-            rabbitTemplate.convertAndSend(RabbitApplication.quorum_queue_name, msg);
+            rabbitTemplate.convertAndSend(RabbitPublisherApp.topicExchangeName, "foo.bar.baz", msg);
+            rabbitTemplate.convertAndSend(RabbitPublisherApp.quorum_queue_name, msg);
         }
     }
 }

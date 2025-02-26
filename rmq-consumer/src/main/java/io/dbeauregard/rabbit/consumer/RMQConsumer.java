@@ -13,13 +13,13 @@ public class RMQConsumer {
     private static Logger log = LoggerFactory.getLogger(RMQConsumer.class);
 
     // @RabbitHandler
-    @RabbitListener(queues = RabbitApplication.queueName)
+    @RabbitListener(queues = RabbitConsumerApp.queueName)
     public void receiveMessage(String message) {
         log.info("Received <" + message + ">");
     }
 
     // @RabbitHandler
-    @RabbitListener(queues = RabbitApplication.quorum_queue_name)
+    @RabbitListener(queues = RabbitConsumerApp.quorum_queue_name)
     public void receiveMessage2(String message) {
         log.info("Received QQ <" + message + ">");
     }

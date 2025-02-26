@@ -6,22 +6,19 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch Java Program",
+            "name": "rmq-consumer",
             "request": "launch",
-            "mainClass": ""
+            "mainClass": "io.dbeauregard.rabbit.consumer.RabbitConsumerApp",
+            "projectName": "rmq-consumer",
+            "args": "--spring.profiles.active=default"
         },
         {
             "type": "java",
-            "name": "Current File",
+            "name": "rmq-publisher",
             "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "RabbitApplication",
-            "request": "launch",
-            "mainClass": "io.dbeauregard.rabbit.RabbitApplication",
-            "projectName": "rabbit"
+            "mainClass": "io.dbeauregard.rabbit.publisher.RabbitPublisherApp",
+            "projectName": "rmq-producer",
+            "args": "--spring.profiles.active=default"
         }
     ]
 }
