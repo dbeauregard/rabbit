@@ -6,7 +6,7 @@ if [ "$#" -lt 2 ]; then
 fi
 
 echo "Running rabbitmqctl against RMQ Server# $1"
-export RABBITMQ_CONF_ENV_FILE="/Users/dbeauregard/Workspace/rabbit/rmq-servers/rabbitmq$1-env.conf"
+export RABBITMQ_CONF_ENV_FILE="/Users/dbeauregard/Workspace/rabbit/scripts/rabbitmq$1-env.conf"
 echo "Config File: $RABBITMQ_CONF_ENV_FILE"
 
 shift
