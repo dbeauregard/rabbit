@@ -6,8 +6,8 @@ build/
 !**/src/test/**/build/
 
 ### RabbitMQ ###
-rmq-servers/*/logs/
-rmq-servers/*/mnesia/
+scripts/*/logs/
+scripts/*/mnesia/
 erl_crash.dump
 
 ### STS ###
