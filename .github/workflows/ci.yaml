@@ -11,7 +11,7 @@ on:
 
 jobs:
   Display-inputs:
-    runs-on: [ tpe-nano ]
+    runs-on: ubuntu-latest
     steps:
       - name: Display User Inputs
         id: display-user-inputs
