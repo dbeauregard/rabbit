@@ -1,0 +1,20 @@
+name: RabbitMQ CI Workflow
+
+on:
+    workflow_dispatch:
+        inputs:
+            version:
+                description: 'the version'
+                required: true
+                type: string
+                default: ''
+
+jobs:
+  Display-inputs:
+    runs-on: [ tpe-nano ]
+    steps:
+      - name: Display User Inputs
+        id: display-user-inputs
+        run: |
+          echo "User Inputs:"
+          echo "${{ toJSON(github.event.inputs) }}"
