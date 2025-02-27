@@ -26,6 +26,6 @@ public class RMQProducer implements CommandLineRunner {
         }
 
         log.info("Producer... and Done!  Exiting.");
-        // System.exit(0);
+        System.exit(0);
     }
 }

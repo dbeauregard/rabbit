@@ -19,7 +19,7 @@ public class RabbitConsumerApp {
 	//Classic Queue
 	@Bean
 	Queue queue() {
-		return new Queue(queueName, false, true, false);
+		return new Queue(queueName, false, false, false);
 	}
 
 	//Quorum Queue
