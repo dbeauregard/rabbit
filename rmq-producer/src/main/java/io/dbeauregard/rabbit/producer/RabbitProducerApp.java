@@ -1,4 +1,4 @@
-package io.dbeauregard.rabbit.publisher;
+package io.dbeauregard.rabbit.producer;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class RabbitPublisherApp {
+public class RabbitProducerApp {
 
 	static final String queueName = "spring-boot-queue";
 	static final String quorum_queue_name = "quorum.queue";
@@ -23,13 +23,13 @@ public class RabbitPublisherApp {
 	private static final String headerExchangeName = "spring-boot-headerExchange";
 
 	public static void main(String[] args) {
-		SpringApplication.run(RabbitPublisherApp.class, args);
+		SpringApplication.run(RabbitProducerApp.class, args);
 	}
 
 	//Classic Queue
 	@Bean
 	Queue queue() {
-		return new Queue(queueName, false, true, true);
+		return new Queue(queueName, false, true, false);
 	}
 
 	//Quorum Queue
@@ -45,25 +45,25 @@ public class RabbitPublisherApp {
 	// Direct Exchange
 	@Bean
 	DirectExchange directExchange() {
-		return new DirectExchange(directExchangeName, false, true);
+		return new DirectExchange(directExchangeName, false, false);
 	}
 
 	// Topic Exchange
 	@Bean
 	TopicExchange topicExchange() {
-		return new TopicExchange(topicExchangeName, false, true);
+		return new TopicExchange(topicExchangeName, false, false);
 	}
 
 	// Fanout Exchange
 	@Bean
 	FanoutExchange fanoutExchange() {
-		return new FanoutExchange(fanoutExchangeName, false, true);
+		return new FanoutExchange(fanoutExchangeName, false, false);
 	}
 
 	// Header Exchange
 	@Bean
 	HeadersExchange headerExchange() {
-		return new HeadersExchange(headerExchangeName, false, true);
+		return new HeadersExchange(headerExchangeName, false, false);
 	}
 
 	@Bean

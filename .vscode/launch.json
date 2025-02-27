@@ -14,9 +14,9 @@
         },
         {
             "type": "java",
-            "name": "rmq-publisher",
+            "name": "rmq-producer",
             "request": "launch",
-            "mainClass": "io.dbeauregard.rabbit.publisher.RabbitPublisherApp",
+            "mainClass": "io.dbeauregard.rabbit.producer.RabbitProducerApp",
             "projectName": "rmq-producer",
             "args": "--spring.profiles.active=default"
         }
