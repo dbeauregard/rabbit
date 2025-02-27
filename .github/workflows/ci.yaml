@@ -32,7 +32,7 @@ jobs:
             - name: Set Outputs
               id: set-outputs
               run: |
-                  echo "JUMPERBOX_IP=$HOSTNAME" >> $GITHUB_OUTPUT
+                  echo "JUMPERBOX_IP=HOSTNAME" >> $GITHUB_OUTPUT
 
     final-step:
         runs-on: ubuntu-latest
