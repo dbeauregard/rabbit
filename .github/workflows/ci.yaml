@@ -12,6 +12,7 @@ on:
 # ENV Vars can be at top level, job level, or step level
 env: 
   DAY_OF_WEEK: Monday
+  GH_TOKEN: ${{ github.token }}
 
 jobs:
     Display-inputs:
