@@ -17,6 +17,8 @@ env:
 jobs:
     Display-inputs:
         runs-on: ubuntu-latest
+        permissions:
+            actions: write
         steps:
             - name: Display User Inputs
               id: display-user-inputs
