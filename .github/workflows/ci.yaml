@@ -12,7 +12,7 @@ on:
 # ENV Vars can be at top level, job level, or step level
 env: 
   DAY_OF_WEEK: Monday
-#   GH_TOKEN: ${{ github.token }}
+  GH_TOKEN: ${{ github.token }}
 
 jobs:
     Display-inputs:
@@ -30,8 +30,7 @@ jobs:
         outputs:
             OUTPUT1: ${{ steps.set-outputs.outputs.JUMPERBOX_IP }}
         steps:
-            - name: Set up GitHub CLI
-              run: echo "${{ secrets.GH_PAT }}" | gh auth login --with-token
+            - uses: actions/checkout@v4
             - name: Display Version Input
               id: display-version-inputs
               run: |
