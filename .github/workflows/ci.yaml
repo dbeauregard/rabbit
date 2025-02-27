@@ -30,6 +30,8 @@ jobs:
         outputs:
             OUTPUT1: ${{ steps.set-outputs.outputs.JUMPERBOX_IP }}
         steps:
+            - name: Set up GitHub CLI
+              run: echo "${{ secrets.GH_PAT }}" | gh auth login --with-token
             - name: Display Version Input
               id: display-version-inputs
               run: |
