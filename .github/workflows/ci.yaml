@@ -37,8 +37,9 @@ jobs:
                 # echo "$GITHUB_ENV"
                 # cat "$GITHUB_ENV"
                 echo ${{vars.TEST_VAR}}
+                gh variable set TEST_VAR --body "${{vars.TEST_VAR}} +update"
                 echo ${{secrets.GITHUB_TOKEN}}
-                env
+                # env
             - name: Set Outputs
               id: set-outputs
               run: |
