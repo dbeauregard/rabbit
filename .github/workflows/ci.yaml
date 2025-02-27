@@ -10,11 +10,20 @@ on:
                 default: ''
 
 jobs:
-  Display-inputs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Display User Inputs
-        id: display-user-inputs
-        run: |
-          echo "User Inputs:"
-          echo "${{ toJSON(github.event.inputs) }}"
+    Display-inputs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Display User Inputs
+              id: display-user-inputs
+              run: |
+                echo "User Inputs:"
+                echo "${{ toJSON(github.event.inputs) }}"
+
+    in-and-out:
+        runs-on: ubuntu-latest
+        needs: Display-inputs
+        steps:
+            - name: Display User Inputs
+              id: display-user-inputs
+              run: |
+                echo "Version input: ${{inputs.version}}"
