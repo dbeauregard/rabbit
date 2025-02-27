@@ -43,3 +43,4 @@ jobs:
               run: |
                 echo "Output1: ${{needs.in-and-out.outputs.OUTPUT1}}"
                 echo "Best regards," >> $GITHUB_STEP_SUMMARY
+                # use upload artifact and download artifact to pass artifacts
