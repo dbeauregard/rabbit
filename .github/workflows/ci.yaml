@@ -34,8 +34,8 @@ jobs:
               run: |
                 echo "Version input: ${{inputs.version}}"
                 echo "Day of week: $DAY_OF_WEEK"
-                echo "$GITHUB_ENV"
-                cat "$GITHUB_ENV"
+                # echo "$GITHUB_ENV"
+                # cat "$GITHUB_ENV"
                 echo ${{vars.Workflow}}
                 echo ${{secrets.GITHUB_TOKEN}}
                 env
