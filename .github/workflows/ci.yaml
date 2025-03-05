@@ -63,9 +63,9 @@ jobs:
                 echo "Name input: ${{inputs.inName}}"
                 
                 echo "### ENV ###"
-                echo "Workflow ENV: $WF_ENV_VAR
-                echo "Job ENV: $JOB_ENV_VAR
-                echo "Step ENV: $STEP_ENV_VAR
+                echo "Workflow ENV: $WF_ENV_VAR"
+                echo "Job ENV: $JOB_ENV_VAR"
+                echo "Step ENV: $STEP_ENV_VAR"
 
                 # echo "$GITHUB_ENV"
                 # cat "$GITHUB_ENV"
