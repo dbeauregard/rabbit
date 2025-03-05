@@ -1,5 +1,19 @@
 name: RabbitMQ CI Workflow
 
+# Concepts
+# Workflow -> Jobs -> Steps
+# Tiggered by 'on's
+# Can have input variables
+# Can read/write GH Secrets and Variables
+# Can have local variables at multiple levels
+# Can pass job outputs to job inputs
+# Can pass artifacts
+# Can output stuff at the end
+# * look at cache
+# * look at matrix
+# * conditionals
+
+
 on:
     workflow_dispatch:
         inputs:
@@ -33,7 +47,7 @@ jobs:
             OUTPUT1: ${{ steps.set-outputs.outputs.JUMPERBOX_IP }}
         steps:
             - uses: actions/checkout@v4
-            - name: Display Version Input
+            - name: Display Variables
               id: display-version-inputs
               run: |
                 echo "Version input: ${{inputs.version}}"
@@ -44,10 +58,22 @@ jobs:
                 gh variable set TEST_VAR --body "${{vars.TEST_VAR}} +update"
                 echo ${{secrets.GITHUB_TOKEN}}
                 # env
+            - name: Set an environment variable
+              run: echo "MY_VARIABLE=Hello from job1" >> $GITHUB_ENV
+            - name: Use the environment variable
+              run: echo "The variable is $MY_VARIABLE"
             - name: Set Outputs
               id: set-outputs
               run: |
                   echo "JUMPERBOX_IP=HOSTNAME" >> $GITHUB_OUTPUT
+                  echo "::set-output name=my_output::Hello from job1" # DEPRICATED
+            - name: Create an output file
+              run: echo "This is my final output" > output.txt
+            - name: Upload output file
+              uses: actions/upload-artifact@v3
+              with:
+                name: output-file
+                path: output.txt
 
     final-step:
         runs-on: ubuntu-latest
@@ -57,5 +83,17 @@ jobs:
               id: display-user-inputs
               run: |
                 echo "Output1: ${{needs.in-and-out.outputs.OUTPUT1}}"
+            - name: Download output file
+              uses: actions/download-artifact@v3
+              with:
+                name: output-file
+                path: output.txt
+            - name: Display the output file
+              run: |
+                echo "Output file: "
+                cat output.txt
+            - name: Set the Summary
+              id: set-step-summary
+              run: |
                 echo "Best regards," >> $GITHUB_STEP_SUMMARY
-                # use upload artifact and download artifact to pass artifacts
+                
