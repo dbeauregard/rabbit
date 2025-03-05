@@ -1,4 +1,4 @@
-name: RabbitMQ CI Workflow
+name: Sample GitHub Action Workflow
 
 # Concepts
 # Workflow -> Jobs -> Steps
@@ -11,28 +11,32 @@ name: RabbitMQ CI Workflow
 # Can output stuff at the end
 # * look at cache
 # * look at matrix
-# * conditionals
+# * look at conditionals
 
 
 on:
     workflow_dispatch:
         inputs:
-            version:
+            inVersion:
                 description: 'the version'
                 required: true
                 type: string
                 default: ''
+            inName:
+                description: 'your name'
+                required: false
+                type: string
+                default: 'derek'
 
 # ENV Vars can be at top level, job level, or step level
 env: 
-  DAY_OF_WEEK: Monday
-  GH_TOKEN: ${{ secrets.GH_PAT }}  # Use a Personal Access Token
+  WF_ENV_VAR: WorkflowEnvVarValue
 
 jobs:
     Display-inputs:
         runs-on: ubuntu-latest
         permissions:
-            actions: write
+            actions: none # none | read | write permission for GITHUB_TOLKEN
         steps:
             - name: Display User Inputs
               id: display-user-inputs
@@ -45,13 +49,24 @@ jobs:
         needs: Display-inputs
         outputs:
             OUTPUT1: ${{ steps.set-outputs.outputs.JUMPERBOX_IP }}
+        env:
+          JOB_ENV_VAR: JobEnvVarValue
         steps:
             - uses: actions/checkout@v4
+              env:
+                STEP_ENV_VAR: StepEnvVarValue
             - name: Display Variables
               id: display-version-inputs
               run: |
-                echo "Version input: ${{inputs.version}}"
-                echo "Day of week: $DAY_OF_WEEK"
+                echo "### INPUTS ###"
+                echo "Version input: ${{inputs.inVersion}}"
+                echo "Name input: ${{inputs.inName}}"
+                
+                echo "### ENV ###"
+                echo "Workflow ENV: $WF_ENV_VAR
+                echo "Job ENV: $JOB_ENV_VAR
+                echo "Step ENV: $STEP_ENV_VAR
+
                 # echo "$GITHUB_ENV"
                 # cat "$GITHUB_ENV"
                 echo ${{vars.TEST_VAR}}
