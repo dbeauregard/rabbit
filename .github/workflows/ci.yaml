@@ -66,11 +66,10 @@ jobs:
               id: set-outputs
               run: |
                   echo "JUMPERBOX_IP=HOSTNAME" >> $GITHUB_OUTPUT
-                  echo "::set-output name=my_output::Hello from job1" # DEPRICATED
             - name: Create an output file
               run: echo "This is my final output" > output.txt
             - name: Upload output file
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                 name: output-file
                 path: output.txt
@@ -84,7 +83,7 @@ jobs:
               run: |
                 echo "Output1: ${{needs.in-and-out.outputs.OUTPUT1}}"
             - name: Download output file
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: output-file
                 path: output.txt
