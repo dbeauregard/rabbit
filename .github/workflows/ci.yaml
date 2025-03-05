@@ -86,12 +86,13 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                 name: output-file
-                path: output.txt
+                path: output
             - name: Display the output file
               run: |
                 echo "Output file: "
-                cat output.txt
+                cat output/output.txt
             - name: Set the Summary
+              if: always()
               id: set-step-summary
               run: |
                 echo "Best regards," >> $GITHUB_STEP_SUMMARY
