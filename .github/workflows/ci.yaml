@@ -9,9 +9,10 @@ name: Sample GitHub Action Workflow
 # Can pass job outputs to job inputs
 # Can pass artifacts
 # Can output stuff at the end
-# * look at cache
+# * look at cache (good for .m2 repo)
 # * look at matrix
 # conditionals
+# * look at environments
 
 
 on:
@@ -48,6 +49,7 @@ jobs:
 
     in-and-out:
         runs-on: ubuntu-latest
+        # environment: 
         permissions:
             actions: write # none | read | write permission for GITHUB_TOLKEN
         needs: Display-inputs
