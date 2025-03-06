@@ -75,9 +75,11 @@ jobs:
                 echo "### SECRETS AND VARS ###"
                 echo "TEST_SECRET: ${{secrets.TEST_SECRET}}"
                 echo "TEST_VAR: ${{vars.TEST_VAR}}"
+                echo "TEST_VAR_UPDATE: ${{vars.TEST_VAR_UPDATE}}"
 
                 echo "### Update Variable ###"
-                gh variable set TEST_VAR --body "${{vars.TEST_VAR}} +update"
+                gh variable set TEST_VAR --body "${{vars.TEST_VAR_UPDATE}} + ${{inputs.inVersion}}."
+                echo "TEST_VAR_UPDATE: ${{vars.TEST_VAR_UPDATE}}"
             - name: Set an environment variable
               run: echo "MY_VARIABLE=Hello from job1" >> $GITHUB_ENV
             - name: Read the environment variable
