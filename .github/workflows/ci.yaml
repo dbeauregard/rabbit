@@ -31,6 +31,7 @@ on:
 # ENV Vars can be at top level, job level, or step level
 env: 
   WF_ENV_VAR: WorkflowEnvVarValue
+  GH_TOKEN: ${{ github.token }}
 
 jobs:
     Display-inputs:
@@ -46,6 +47,8 @@ jobs:
 
     in-and-out:
         runs-on: ubuntu-latest
+        permissions:
+            actions: write # none | read | write permission for GITHUB_TOLKEN
         needs: Display-inputs
         outputs:
             OUTPUT1: ${{ steps.set-outputs.outputs.OUT1 }}
