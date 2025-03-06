@@ -11,7 +11,7 @@ name: Sample GitHub Action Workflow
 # Can output stuff at the end
 # * look at cache
 # * look at matrix
-# * look at conditionals
+# conditionals
 
 
 on:
@@ -101,6 +101,12 @@ jobs:
           run: echo "MY_VARIABLE=Hello from job1" >> $GITHUB_ENV
         - name: Read the environment variable
           run: echo "The variable is $MY_VARIABLE"
+        - name: Run only if the previous step fails
+          if: failure()
+          run: echo "Previous step failed!"
+        - name: Run only if the previous step succeeds
+          if: success()
+          run: echo "Previous step succeeded!"
 
     final-job:
         runs-on: ubuntu-latest
