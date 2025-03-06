@@ -100,6 +100,7 @@ jobs:
     final-step:
         runs-on: ubuntu-latest
         needs: in-and-out
+        if: needs.in-and-out.result == 'success'
         steps:
             - name: Display User Inputs
               id: display-user-inputs
