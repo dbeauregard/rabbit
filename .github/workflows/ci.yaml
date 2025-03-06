@@ -69,11 +69,11 @@ jobs:
                 echo "Step ENV: $STEP_ENV_VAR"
 
                 echo "### SECRETS AND VARS ###"
-                echo ${{secrets.TEST_SECRET}}
-                echo ${{vars.TEST_VAR}}
+                echo "TEST_SECRET: ${{secrets.TEST_SECRET}}"
+                echo "TEST_VAR: ${{vars.TEST_VAR}}"
 
                 echo "### Update Variable ###"
-                # gh variable set TEST_VAR --body "${{vars.TEST_VAR}} +update"
+                gh variable set TEST_VAR --body "${{vars.TEST_VAR}} +update"
             - name: Set an environment variable
               run: echo "MY_VARIABLE=Hello from job1" >> $GITHUB_ENV
             - name: Read the environment variable
@@ -81,8 +81,8 @@ jobs:
             - name: Set Outputs
               id: set-outputs
               run: |
-                  echo "OUT1=JobOutPut1" >> $GITHUB_OUTPUT
-                  echo "OUT2=JobOutPut2" >> $GITHUB_OUTPUT
+                  echo "OUT1=JobOutPut1Value" >> $GITHUB_OUTPUT
+                  echo "OUT2=JobOutPut2Value" >> $GITHUB_OUTPUT
             - name: Create an output file artifact
               run: echo "This is the contents of the output file" > output.txt
             - name: Upload output file
@@ -107,8 +107,7 @@ jobs:
                 path: output
             - name: Display the output file
               run: |
-                echo "Output file: "
-                cat output/output.txt
+                echo "Output file: " && cat output/output.txt
             - name: Set the Summary
               if: always()
               id: set-step-summary
