@@ -127,7 +127,7 @@ jobs:
               path: output
           - name: Display the output file
             run: |
-              echo "Output file: " && cat output/output.txt
+              echo "Output file: $(cat output/output.txt)"
           - name: Set the Summary
             if: always()
             id: set-step-summary
