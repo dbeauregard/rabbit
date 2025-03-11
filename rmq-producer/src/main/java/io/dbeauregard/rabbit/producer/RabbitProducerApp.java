@@ -37,6 +37,7 @@ public class RabbitProducerApp {
 	public Queue quorumQueue() {
 		return QueueBuilder.durable(quorum_queue_name)
 				.withArgument("x-queue-type", "quorum") // Specify quorum queue
+				.withArgument("x-quorum-initial-group-size", 3) // Number of replicas (default is 3)
 				.build();
 	}
 
