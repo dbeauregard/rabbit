@@ -1,1 +1,3 @@
-[rabbitmq_amqp1_0,rabbitmq_management,rabbitmq_mqtt,rabbitmq_stomp,rabbitmq_stream].
+[rabbitmq_amqp1_0,rabbitmq_management,rabbitmq_stream].
+
+%%[rabbitmq_amqp1_0,rabbitmq_management,rabbitmq_mqtt,rabbitmq_stomp,rabbitmq_stream].
